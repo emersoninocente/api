@@ -1,6 +1,10 @@
 const express = require("express");
 const statusRoutes = require("./routes/status");
+const usuariosRoutes = require("./routes/usuarios");
+const cursosRoutes = require("./routes/cursos");
 const app = express();
 app.use(express.json());
 app.use("/status", statusRoutes);
+app.use("/usuarios", usuariosRoutes);
+app.use("/cursos", cursosRoutes);
 module.exports = app;

@@ -53,10 +53,29 @@
  *       201:
  *         description: Usuario criado com sucesso
  */
+/**
+ * @swagger
+ * /usuarios/admin:
+ *   get:
+ *     summary: Rota exclusiva para administradores
+ *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Acesso autorizado
+ *       403:
+ *         description: Acesso negado
+ */
 const express = require("express");
 const router = express.Router();
+const autenticarToken = require("../middlewares/autenticarToken");
+const verificarAdmin = require("../middlewares/verificarAdmin");
 const usuarioController = require("../controllers/usuarioController");
 const validarUsuario = require("../middlewares/validarUsuario");
+router.get("/admin", autenticarToken, verificarAdmin, (req, res) => {
+  res.json({ mensagem: "Bem-vindo, admin!", usuario: req.usuario });
+});
 router.get("/", usuarioController.listar);
 router.post("/", validarUsuario, usuarioController.criar);
 module.exports = router;

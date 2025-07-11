@@ -8,3 +8,6 @@ Railway
 
 ## Objetivo
 API criada praticar o desenvolvimento de API em Node.js com  acesso a banco de dados e deploy em ambiente Railway.
+
+## Update
+Aplicado autenticação na API e acesso por perfil.

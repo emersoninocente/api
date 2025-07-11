@@ -57,10 +57,10 @@
  * @swagger
  * /usuarios/admin:
  *   get:
- *     summary: Rota exclusiva para administradores
+ *     summary: Acesso exclusivo para usuários com perfil admin
  *     tags: [Usuários]
  *     security:
- *       - bearerAuth: []
+ *       - Bearer: []
  *     responses:
  *       200:
  *         description: Acesso autorizado
@@ -69,6 +69,7 @@
  */
 const express = require("express");
 const router = express.Router();
+const { acessoAdmin } = require("../controllers/usuarioController");
 const autenticarToken = require("../middlewares/autenticarToken");
 const verificarAdmin = require("../middlewares/verificarAdmin");
 const usuarioController = require("../controllers/usuarioController");

@@ -4,7 +4,7 @@ const { login } = require("../controllers/authController");
 
 /**
  * @swagger
- * /auth/login:
+ * /auth:
  *   post:
  *     summary: Realiza login e retorna token JWT
  *     tags: [Autenticação]
@@ -24,6 +24,6 @@ const { login } = require("../controllers/authController");
  *       401:
  *         description: Credenciais inválidas
  */
-router.post("/login", login);
+router.post("/", login);
 
 module.exports = router;

@@ -6,7 +6,16 @@ const options = {
     openapi: "3.0.0",
     info: {
       title: "API de Usuários e Cursos",
-      version: "1.0.0",
+      version: "1.0.1",
+    },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT"
+        }
+      }
     },
   },
   apis: ["./src/routes/*.js"], // Caminho para as rotas

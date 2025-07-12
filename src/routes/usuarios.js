@@ -58,9 +58,9 @@
  * /usuarios/admin:
  *   get:
  *     summary: Acesso exclusivo para usuários com perfil admin
- *     tags: [Usuários]
+ *     tags: [Usuarios]
  *     security:
- *       - Bearer: []
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Acesso autorizado

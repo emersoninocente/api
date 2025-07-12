@@ -58,6 +58,6 @@ const verificarAdmin = require("../middlewares/verificarAdmin");
 const cursoController = require("../controllers/cursoController");
 const validarCurso = require("../middlewares/validarCurso");
 
-router.get("/", autenticarToken, verificarAdmin, cursoController.listar);
-router.post("/", validarCurso, cursoController.criar);
+router.get("/", autenticarToken, cursoController.listar);
+router.post("/", autenticarToken, verificarAdmin, validarCurso, cursoController.criar);
 module.exports = router;

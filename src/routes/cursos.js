@@ -2,7 +2,9 @@
  * @swagger
  * /cursos:
  *   get:
- *     summary: Retorna todos os cursos cadastrados
+ *     summary: Retorna todos os cursos cadastrados (para todos os usuários)
+ *     security:
+ *       - bearerAuth: []
  *     tags: [Cursos]
  *     responses:
  *       200:
@@ -28,7 +30,9 @@
  * @swagger
  * /cursos:
  *   post:
- *     summary: Cria um novo curso
+ *     summary: Cria um novo curso (somente para administradores)
+ *     security:
+ *       - bearerAuth: []
  *     tags: [Cursos]
  *     requestBody:
  *       required: true
@@ -49,8 +53,11 @@
 
 const express = require("express");
 const router = express.Router();
+const autenticarToken = require("../middlewares/autenticarToken");
+const verificarAdmin = require("../middlewares/verificarAdmin");
 const cursoController = require("../controllers/cursoController");
 const validarCurso = require("../middlewares/validarCurso");
-router.get("/", cursoController.listar);
+
+router.get("/", autenticarToken, verificarAdmin, cursoController.listar);
 router.post("/", validarCurso, cursoController.criar);
 module.exports = router;
